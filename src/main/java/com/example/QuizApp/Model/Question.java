@@ -12,15 +12,6 @@ import lombok.*;
 @Table(name = "Question")
 public class Question {
     @Id
-    @SequenceGenerator(
-            name = "question_sequence",
-            sequenceName = "question_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "question_sequence"
-    )
     private Long question_id;
     @Column(name = "question_text")
     private String question_text;

@@ -24,7 +24,7 @@ public class UserServices {
     }
 
     public void addNewUser(Users user) {
-        Optional<Users> userOptional = userRepo.findUserByEmail(user.getUser_email());
+        Optional<Users> userOptional = userRepo.findUserByEmail(user.getEmail());
         if(userOptional.isPresent()){
             throw new IllegalStateException("Email Taken");
         }
@@ -38,7 +38,7 @@ public class UserServices {
         userRepo.deleteById(userId);
     }
     @Transactional
-    public void updateUser(Long userId, String userName, String userEmail, String password) {
+    public void updateUser(Long userId, String userName, String userEmail) {
 
         Users user = userRepo.findById(userId)
                 .orElseThrow(() -> new IllegalStateException(
@@ -46,23 +46,18 @@ public class UserServices {
 
         if (userName != null &&
                 userName.length() > 0 &&
-                !Objects.equals(user.getUser_name(), userName)) {
-            user.setUser_name(userName);
+                !Objects.equals(user.getName(), userName)) {
+            user.setName(userName);
         }
         if (userEmail != null &&
                 userEmail.length() > 0 &&
-                !Objects.equals(user.getUser_email(), userEmail)) {
+                !Objects.equals(user.getEmail(), userEmail)) {
             Optional<Users> userOptional = userRepo
                     .findUserByEmail(userEmail);
             if (userOptional.isPresent()) {
                 throw new IllegalStateException("email taken");
             }
-            user.setUser_email(userEmail);
-        }
-        if (password != null &&
-                password.length() > 0 &&
-                !Objects.equals(user.getPassword(), password)) {
-            user.setPassword(password);
+            user.setEmail(userEmail);
         }
     }
 

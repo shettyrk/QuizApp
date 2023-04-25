@@ -5,9 +5,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "Users")
 public class Users {
@@ -21,20 +19,24 @@ public class Users {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Long user_id;
-    @Column(name = "user_name")
-    private String user_name;
-    @Column(name = "user_email")
-    private String user_email;
-    @Column(name = "password")
-    private String password;
-    @Column(name = "role")
-    private String role;
 
-    public Users(String user_name, String user_email, String password, String role) {
-        this.user_name = user_name;
-        this.user_email = user_email;
-        this.password = password;
-        this.role = role;
+    private Long uid;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "email")
+    private String email;
+
+    public Users(Long uid, String name, String email) {
+        this.uid = uid;
+        this.name = name;
+        this.email = email;
+    }
+
+    public String toString() {
+        return "Users{" +
+                "uid=" + uid +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

@@ -10,6 +10,8 @@ import java.util.List;
 @RestController
 public class UserController {
     private final UserServices userServices;
+    private String userEmail;
+
     @Autowired
     public UserController(UserServices userServices) {
         this.userServices = userServices;
@@ -24,12 +26,11 @@ public class UserController {
     }
     @PutMapping(path = "api/v1/users/{user_id}")
     public void updateUser(
-            @PathVariable(value = "user_id") Long user_id,
-            @RequestParam(required = false) String user_name,
-            @RequestParam(required = false) String user_email,
-            @RequestParam(required = false) String password
+            @PathVariable(value = "user_id") Long id,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String email
     ){
-        userServices.updateUser(user_id,user_name,user_email,password);
+        userServices.updateUser(id,name,email);
     }
     @DeleteMapping(path = "api/v1/users/{user_id}")
     public void deleteUser(@PathVariable("user_id") Long user_id){

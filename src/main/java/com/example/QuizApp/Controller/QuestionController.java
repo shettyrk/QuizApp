@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class QuestionController {
@@ -20,6 +21,12 @@ public class QuestionController {
     @GetMapping(path= "api/v1/getAllQuestion")
     public List<Question> getQuestions(){
         return questionService.getQuestions();
+    }
+    @GetMapping(path= "api/v1/getQuestion/{question_id}")
+    public Optional<Question> getQuestions(
+            @PathVariable("question_id") Long question_id
+    ){
+        return questionService.getQuestionFew(question_id);
     }
     @PostMapping(path= "api/v1/addQuestion")
     public void addQuestions(@RequestBody Question question){

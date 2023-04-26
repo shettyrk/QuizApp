@@ -26,6 +26,8 @@ public class Users {
     @Column(name = "email")
     private String email;
 
+//    private Long score;
+
     public Users(Long uid, String name, String email) {
         this.uid = uid;
         this.name = name;

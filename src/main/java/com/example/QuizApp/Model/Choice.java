@@ -1,7 +1,6 @@
 package com.example.QuizApp.Model;
 
 import jakarta.persistence.*;
-import jakarta.websocket.server.ServerEndpoint;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

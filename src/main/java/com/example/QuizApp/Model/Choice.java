@@ -17,5 +17,5 @@ public class Choice {
     private Boolean is_crt;
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Question question_id;
+    private Question question;
 }

@@ -16,6 +16,8 @@ public class Question {
     @Column(name = "question_text")
     private String question_text;
 
+
+
     public Question(String question_text) {
         this.question_text = question_text;
     }
